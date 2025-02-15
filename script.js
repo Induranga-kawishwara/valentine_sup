@@ -73,11 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const musicPlayer = document.querySelector(".music");
   const audio = document.querySelector(".audio");
 
-  let isPlaying = true;
-  audio.play().catch(() => console.log("Autoplay blocked"));
-
-  // Apply initial animation
-  musicPlayer.style.animation = "pulse 1.5s infinite";
+  let isPlaying = false;
 
   musicPlayer.addEventListener("click", () => {
     if (isPlaying) {
