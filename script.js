@@ -72,11 +72,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // Music player control
   const musicPlayer = document.querySelector(".music");
   const audio = document.querySelector(".audio");
-  let isPlaying = false;
+
+  let isPlaying = true; // Start with music playing
+  audio.play().catch(() => console.log("Autoplay blocked"));
+
+  // Apply initial animation
+  musicPlayer.style.animation = "pulse 1.5s infinite";
 
   musicPlayer.addEventListener("click", () => {
+    if (isPlaying) {
+      audio.pause();
+      musicPlayer.style.animation = "none";
+    } else {
+      audio.play();
+      musicPlayer.style.animation = "pulse 1.5s infinite";
+    }
     isPlaying = !isPlaying;
-    isPlaying ? audio.play() : audio.pause();
-    musicPlayer.style.animation = isPlaying ? "pulse 1.5s infinite" : "none";
   });
 });
